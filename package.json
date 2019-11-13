@@ -1,0 +1,38 @@
+{
+  "name": "extests-app",
+  "version": "1.0.0",
+  "description": "ExTests web application.",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "carrier": "^0.3.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.7.2",
+    "express": "^4.17.1",
+    "got": "^9.6.0",
+    "knex": "^0.20.1",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "sqlite3": "^4.1.0",
+    "stream": "0.0.2",
+    "telegram-push": "^1.0.1",
+    "validator": "^12.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "8.2.0",
+    "jshint": "2.10.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nemanjapetrovic/iswebsiteup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nemanjapetrovic/iswebsiteup/issues"
+  },
+  "homepage": "https://github.com/nemanjapetrovic/iswebsiteup#readme"
+}

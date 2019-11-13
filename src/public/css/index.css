@@ -1,0 +1,102 @@
+/* DataTable status dots */
+.status-dot {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 7px;
+}
+
+.status-no-data {
+    background-color: #e4e0e0;
+}
+
+.status-paused {
+    background-color: #878787;
+}
+
+.status-ok {
+    background-color: #13CE67;
+}
+
+.status-alert {
+    background-color: #FF4948;
+}
+
+/* DataTable status dots */
+
+.alert-channels-icons {
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.btn-add-test {
+    float: right;
+    margin-top: 12px;
+}
+
+/* DataTable search */
+.dataTables_filter {
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+/* DataTable search */
+
+
+/* Filters */
+
+.filters {
+    float: left;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+.filter-items {
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin-left: 30px;
+}
+
+span.step {
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    display: inline-block;
+    line-height: 2em;
+    text-align: center;
+    width: 2.4em;
+    font-size: 0.8em;
+    border: 1px solid;
+    border-radius: 24%;
+}
+
+.filter-all {
+    color: #337ab7;
+    border-color: #337ab7;
+}
+
+.filter-ok {
+    color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+.filter-inactive {
+    color: #6F7A8F;
+    border-color: #6F7A8F;
+}
+
+.filter-error {
+    color: #d9534f;
+    border-color: #d9534f;
+}
+
+.filter-selected {
+    border-bottom: 5px solid red;
+}
+
+/* Filters */
