@@ -1,4 +1,5 @@
 const child_process = require('child_process');
+const punycode = require('punycode');
 
 const checkLib = require('./../sdk/lib/check.lib');
 
@@ -15,7 +16,11 @@ exports.index = async function (req, res) {
 };
 
 exports.checkUrl = async function (req, res) {
-    const url = req.query.url;
+    let url = req.params.url;
+    url = url.replace(/^(?:https?:)?\/\//, '');
+    url = punycode.toASCII(url);
+    url = encodeURIComponent(url);
+
     try {
         const command = `curl --max-time 3.0 -I -H "User-Agent: IsWebsiteUp | check if website is down or up right now? (+https://iswebsiteup.com)" ${url}`
         const response = child_process.execSync(command).toString();

@@ -7,6 +7,6 @@ const validateUrl = require('./../middleware/validation/url.validate');
 
 router.get('/', indexController.index);
 
-router.get('/check', [validateUrl()], indexController.checkUrl);
+router.get('/:url', [validateUrl()], indexController.checkUrl);
 
 module.exports = router;
