@@ -1,4 +1,4 @@
-const got = require('got');
+const child_process = require('child_process');
 
 const checkLib = require('./../sdk/lib/check.lib');
 
@@ -15,6 +15,29 @@ exports.index = async function (req, res) {
 };
 
 exports.checkUrl = async function (req, res) {
+    const url = req.query.url;
+    try {
+        const command = `curl --max-time 3.0 -I -H "User-Agent: IsWebsiteUp | check if website is down or up right now? (+https://iswebsiteup.com)" ${url}`
+        const response = child_process.execSync(command).toString();
+
+        let responseStatus = null;
+        if (response.startsWith('HTTP/2')) {
+            responseStatus = response.substring(7, 10);
+        } else {
+            responseStatus = response.substring(9, 12);
+        }
+
+        const websiteUp = ok_codes.some(code => code == responseStatus) ? 1 : 0;
+        addCheck(url, websiteUp);
+
+        res.status(200).send('ok');
+    } catch (err) {
+        addCheck(url, 0);
+        res.status(200).send('not ok');
+    }
+};
+
+/*
     const url = req.query.url;
     try {
         const body = await got.head(url, {
@@ -44,9 +67,6 @@ exports.checkUrl = async function (req, res) {
         res.status(200).send('not ok');
     }
 };
-
+//Help from: thanks!
 //https://github.com/sjparkinson/isitup.org/blob/master/src/functions.php
-
-//timeout problem za hcp.switchplus.ch
-//port
-//nobody
+*/
