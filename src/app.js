@@ -7,24 +7,19 @@ if (process.env.ENV !== 'production') {
 const express = require('express');
 
 // npm: Packages-middlewares
-const bodyParser = require('body-parser');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 
 const logger = require('./logger/http.logger');
 
 // App
 const app = express();
 
-// Cookie parser
-app.use(cookieParser());
-
 // Setting static files
 app.use(express.static(path.join(__dirname, './public')));
 
 // Parser for body request
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: true
 }));
 
