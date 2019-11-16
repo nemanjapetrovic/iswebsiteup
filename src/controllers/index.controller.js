@@ -1,4 +1,4 @@
-const child_process = require('child_process');
+const got = require('got');
 const punycode = require('punycode');
 
 const checkLib = require('./../sdk/lib/check.lib');
@@ -22,28 +22,38 @@ exports.checkUrl = async function (req, res) {
     url = encodeURIComponent(url);
 
     try {
-        const command = `curl --max-time 3.0 -I -H "User-Agent: IsWebsiteUp | check if website is down or up right now? (+https://iswebsiteup.com)" ${url}`
-        const response = child_process.execSync(command).toString();
+        const body = await got.head(url, {
+            timeout: 3000,
+            retry: {
+                retries: 0
+            },
+            headers: {
+                'user-agent': 'IsWebsiteUp | check if website is down or up right now? (+https://iswebsiteup.com)'
+            },
+            followRedirect: false
+        });
 
-        let responseStatus = null;
-        if (response.startsWith('HTTP/2')) {
-            responseStatus = response.substring(7, 10);
-        } else {
-            responseStatus = response.substring(9, 12);
-        }
-
-        const websiteUp = okCodes.some(code => code == responseStatus) ? 1 : 0;
+        const websiteUp = okCodes.some(code => code == body.statusCode) ? 1 : 0;
         addCheck(url, websiteUp);
 
         res.status(200).json({
-            status: responseStatus,
+            status: body.statusCode,
             message: 'Up'
         });
     } catch (err) {
         addCheck(url, 0);
+
+        if (err.code != 'ENOTFOUND') {
+            console.log(err);
+            res.sendStatus(500);
+            return false;
+        }
+
         res.status(200).json({
             status: 'Unknown',
             message: 'Down'
         });
     }
 };
+
+// ne radi lepo TIMEOUT nempet.me:8053
