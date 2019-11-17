@@ -1,7 +1,7 @@
 {
-  "name": "extests-app",
+  "name": "iswebsiteup",
   "version": "1.0.0",
-  "description": "ExTests web application.",
+  "description": "IsWebsiteUp | check if website is down or up right now? (https://iswebsiteup.com)",
   "main": "app.js",
   "dependencies": {
     "carrier": "^0.3.0",
@@ -21,7 +21,7 @@
     "jshint": "2.10.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js"
   },
   "repository": {
     "type": "git",
