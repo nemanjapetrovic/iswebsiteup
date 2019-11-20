@@ -1,8 +1,6 @@
 :root {
     --paragraphFontSize: 1.125em;
 
-    --inputShadowSpeedTransition: 300ms;
-
     --inputPaddingV: 0.4rem;
     --inputPaddingH: 1.2rem;
     --inputFontSize: 2.0rem;
@@ -69,7 +67,6 @@ p {
     line-height: var(--inputLineHeight);
     border: 1px solid;
     border-radius: 0.4rem;
-    transition: box-shadow var(--inputShadowSpeedTransition);
 }
 
 #url::placeholder {
