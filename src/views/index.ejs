@@ -10,15 +10,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
 
+    <!-- Load fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,400italic" rel="stylesheet">
+
     <!-- Local CSS -->
     <link rel="stylesheet" type="text/css" href="./css/index.css">
 
-    <title>IsWebsiteUp | check if website is down or up right now?</title>
+    <title>IsWebsiteUp | check if website is up or down right now?</title>
 </head>
 
 <body>
-    TEST
-
+    <div class="container-fluid">
+        <div class="row align-items-center h-100 justify-content-center">
+            <div class="col-md-6">
+                <div class="wrapper">
+                    <h1>Is Website Up?</h1>
+                    <div class="inner">
+                        <p>check if website is up or down right now?</p>
+                    </div>
+                    <input type="text" name="url" id="url" placeholder="test.com">
+                    <div class="inner">
+                        <button id="check-btn" type="submit">Check</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -30,14 +47,11 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
-
     <!-- Local scripts -->
     <script src="./js/global.js"></script>
 
     <script>
-        $(document).ready(function () {
-            console.log('ok');
-        });
+
     </script>
 </body>
 

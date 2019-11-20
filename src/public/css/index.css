@@ -1,5 +1,82 @@
+:root {
+    --paragraphFontSize: 1.125em;
+
+    --inputShadowSpeedTransition: 300ms;
+
+    --inputPaddingV: 0.4rem;
+    --inputPaddingH: 1.2rem;
+    --inputFontSize: 2.0rem;
+    --inputLineHeight: 1.8;
+    --inputPlaceholderColor: #B0BEC5;
+}
+
 body,
 html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+body {
+    text-align: center;
+    color: #000000;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: -0.025rem;
+    font-size: 1.125em;
+    line-height: 1.625;
+    font-weight: 400;
+}
+
+p {
+    font-size: var(--paragraphFontSize);
+}
+
+.container-fluid,
+.row-fluid {
+    height: inherit;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+.inner {
+    padding: 20px;
+}
+
+#check-btn {
+    height: 3.25rem;
+    line-height: 3.25rem;
+    padding: 0 1.625rem;
+    font-size: 1em;
+    border-radius: 0.25rem;
+    border-color: #000;
+    background-color: #000000;
+    color: #FFFFFF;
+    position: relative;
+}
+
+#url {
+    margin: 0;
+    max-width: 100%;
+    padding: var(--inputPaddingV) var(--inputPaddingH);
+    color: inherit;
+    font-family: inherit;
+    font-size: var(--inputFontSize);
+    font-weight: inherit;
+    line-height: var(--inputLineHeight);
+    border: 1px solid;
+    border-radius: 0.4rem;
+    transition: box-shadow var(--inputShadowSpeedTransition);
+}
+
+#url::placeholder {
+    color: var(--inputPlaceholderColor);
+}
+
+#url:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #000000;
 }
