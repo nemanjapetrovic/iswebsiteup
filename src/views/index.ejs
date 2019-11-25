@@ -22,16 +22,19 @@
 <body>
     <div class="container-fluid">
         <div class="row align-items-center h-100 justify-content-center">
-            <div class="col-md-6">
+            <div class="col">
                 <div class="wrapper inactive">
-                    <h1>Is Website Up?</h1>
+                    <h1 id="logo"><img src="img/logo.svg" width="64" height="64"
+                            alt="is website up or down right now?" /> Is Website Up?</h1>
                     <div class="inner">
                         <p>check if website is up or down right now?</p>
                     </div>
-                    <input type="text" name="url" id="url" placeholder="test.com">
-                    <div class="inner">
-                        <button id="check-btn" class="btn" type="submit">Check</button>
-                    </div>
+                    <form id="check-url-form" method="GET">
+                        <input type="text" name="url" id="url" placeholder="test.com" autofocus>
+                        <div class="inner">
+                            <button id="check-btn" class="btn" type="submit">Check</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -53,6 +56,48 @@
     <script>
         $(document).ready(function () {
             $('div.inactive').fadeIn(300).removeClass('inactive');
+
+            function checkUrl() {
+                $.get('/' + $("#url").val(), function (data) {
+                    alert("Data: " + data);
+                });
+            };
+
+            $.validator.addMethod(
+                'regex',
+                function (value, element, regexp) {
+                    var re = new RegExp(regexp);
+                    return this.optional(element) || re.test(value);
+                },
+                'Please check your input.'
+            );
+
+            $('#check-url-form').validate({
+                rules: {
+                    url: {
+                        required: true,
+                        regex: '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$'
+                    }
+                },
+                messages: {
+                    url: {
+                        required: 'URL is required.',
+                        regex: 'Invalid URL.'
+                    }
+                },
+                submitHandler: function (form) {
+                    checkUrl();
+                    return false;
+                }
+            });
+
+            $('#check-btn').click(function (e) {
+                e.preventDefault();
+                if (!$('#check-url-form').valid()) {
+                    return false;
+                }
+                checkUrl();
+            });
         });
     </script>
 </body>
