@@ -81,3 +81,13 @@ p {
 .inactive {
     display: none;
 }
+
+a {
+    text-decoration: underline;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
