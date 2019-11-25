@@ -1,14 +1,4 @@
-# extests-app
+# Is Website Up
+>iswebsiteup.com
 
-ExTests web application.
-
-### icons
-
-- [email](https://themify.me/themify-icons)
-- [project selector](https://themify.me/themify-icons)
-- [slack](https://www.iconfinder.com/icons/2561388/slack_icon)
-
-### external libraries
-
-- [notify.js](https://notifyjs.jpillora.com/)
-- [nice-select.js](https://github.com/hernansartorio/jquery-nice-select)
+Minimal and beautiful Express Node.js application which can be used to check if some website is up or down right now.
