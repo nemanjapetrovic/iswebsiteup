@@ -56,7 +56,10 @@
 
     <script>
         $(document).ready(function () {
+            // Loading design components and cleaning up
             $('div.inactive').fadeIn(300).removeClass('inactive');
+            $("#url").val("");
+            $("#url").focus();
 
             function checkUrl() {
                 $.get('/' + $("#url").val(), function (data) {
@@ -64,6 +67,7 @@
                 });
             };
 
+            // Registering form regex method validator
             $.validator.addMethod(
                 'regex',
                 function (value, element, regexp) {
@@ -73,6 +77,7 @@
                 'Please check your input.'
             );
 
+            // Registering form validator
             $('#check-url-form').validate({
                 rules: {
                     url: {
@@ -92,6 +97,7 @@
                 }
             });
 
+            // OnClick handle
             $('#check-btn').click(function (e) {
                 e.preventDefault();
                 if (!$('#check-url-form').valid()) {
