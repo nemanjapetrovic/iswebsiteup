@@ -9,13 +9,14 @@ exports.index = async function (req, res) {
 
 exports.checkUrl = async function (req, res) {
     let url = req.params.url;
-    url = url.replace(/^(?:https?:)?\/\//, '');
-    url = url + 'http://';
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'http://' + url; // If HTTP protocol is not defined always go with HTTP check
+    }
     url = punycode.toASCII(url);
 
     try {
         const body = await got.head(url, {
-            timeout: process.env.CHECK_TIMEOUT, //TODO: Lower timeout - test with bla.com
+            timeout: process.env.CHECK_TIMEOUT,
             retry: {
                 retries: 0
             },
@@ -40,3 +41,7 @@ exports.checkUrl = async function (req, res) {
         });
     }
 };
+
+//TODO: Lower timeout - test with bla.com
+//TODO: google analytics
+//TODO: unit tests
