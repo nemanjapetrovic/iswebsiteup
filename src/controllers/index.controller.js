@@ -9,9 +9,9 @@ exports.index = async function (req, res) {
 
 exports.checkUrl = async function (req, res) {
     let url = req.params.url;
-    //url = url.replace(/^(?:https?:)?\/\//, ''); //TODO: use HTTPS if exists if not go to HTTP
+    url = url.replace(/^(?:https?:)?\/\//, '');
+    url = url + 'http://';
     url = punycode.toASCII(url);
-    //url = encodeURIComponent(url);
 
     try {
         const body = await got.head(url, {
@@ -34,15 +34,16 @@ exports.checkUrl = async function (req, res) {
             message: 'Up'
         });
     } catch (err) {
-        if (err.code != 'ENOTFOUND' && err.code != 'ETIMEDOUT') {
-            console.log(err);
-            res.sendStatus(500);
-            return false;
-        }
-
         res.status(200).json({
             status: 'Unknown',
             message: 'Down'
         });
     }
 };
+
+
+/*
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'http://' + url; // If HTTPS is not defined always go with HTTP check
+    }
+*/
