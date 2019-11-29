@@ -19,7 +19,7 @@ exports.index = async function (req, res) {
 
 exports.checkUrl = async function (req, res) {
     let url = req.params.url;
-    url = url.replace(/^(?:https?:)?\/\//, '');
+    //url = url.replace(/^(?:https?:)?\/\//, ''); //TODO: use HTTPS if exists if not go to HTTP
     url = punycode.toASCII(url);
     //url = encodeURIComponent(url);
 

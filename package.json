@@ -21,7 +21,8 @@
     "jshint": "2.10.3"
   },
   "scripts": {
-    "start": "node src/app.js"
+    "now-start": "node src/app.js",
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
