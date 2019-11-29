@@ -15,7 +15,7 @@ exports.checkUrl = async function (req, res) {
 
     try {
         const body = await got.head(url, {
-            timeout: process.env.CHECK_TIMEOUT,
+            timeout: process.env.CHECK_TIMEOUT, //TODO: Lower timeout - test with bla.com
             retry: {
                 retries: 0
             },
