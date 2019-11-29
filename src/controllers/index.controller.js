@@ -40,10 +40,3 @@ exports.checkUrl = async function (req, res) {
         });
     }
 };
-
-
-/*
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        url = 'http://' + url; // If HTTPS is not defined always go with HTTP check
-    }
-*/
