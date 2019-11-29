@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "carrier": "^0.3.0",
+    "compression": "^1.7.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "got": "^9.6.0",
+    "helmet": "^3.21.2",
     "morgan": "^1.9.1",
     "punycode": "^2.1.1",
     "stream": "0.0.2",

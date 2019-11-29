@@ -1,18 +1,20 @@
-if (process.env.ENV !== 'production') {
-    var dotenv = require('dotenv');
-    dotenv.config();
-}
+const dotenv = require('dotenv');
+dotenv.config();
 
 // npm: Packages-standard
 const express = require('express');
-
-// npm: Packages-middlewares
+const helmet = require('helmet')
+const compression = require('compression')
 const path = require('path');
 
 const logger = require('./logger/http.logger');
 
 // App
 const app = express();
+
+// Compression
+app.use(compression());
+app.use(helmet());
 
 // Setting static files
 app.use(express.static(path.join(__dirname, './public')));
