@@ -8,7 +8,3 @@ TELEGRAM_LOGGER_ACTIVATED=1
 TELEGRAM_LOGGER_BOT_CHAT_ID=534981519
 TELEGRAM_URL=https://api.telegram.org
 TELEGRAM_BOT_TOKEN=insert_your_bot_token
-
-#SQL database
-DB_CLIENT=sqlite3
-DB_FILE_NAME=./iswebsiteup.db
