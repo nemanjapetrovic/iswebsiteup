@@ -163,3 +163,23 @@ a:hover {
 }
 
 /* #Loading dots animation */
+
+.emoji {
+    font-size: 2.0em;
+    display: inline-block;
+}
+
+.website-status {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-size: 1.4em;
+}
+
+.up {
+    color: green;
+}
+
+.down {
+    color: red;
+}
