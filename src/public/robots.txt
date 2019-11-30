@@ -1,3 +1,4 @@
 User-agent: *
+Disallow:
 
 Sitemap: https://iswebsiteup.com/sitemap.xml
