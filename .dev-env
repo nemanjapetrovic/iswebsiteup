@@ -1,7 +1,6 @@
 #Environment properties
-ENV=dev
+NODE_ENV=dev
 PORT=80
-CHECK_TIMEOUT=300
 
 #Telegram
 TELEGRAM_LOGGER_ACTIVATED=1

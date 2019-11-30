@@ -1,5 +1,4 @@
 const got = require('got');
-const punycode = require('punycode');
 
 const okCodes = [200, 301, 302, 303, 304, 307, 400, 401, 403, 405];
 
@@ -12,11 +11,11 @@ exports.checkUrl = async function (req, res) {
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
         url = 'http://' + url; // If HTTP protocol is not defined always go with HTTP check
     }
-    url = punycode.toASCII(url);
+    url = new URL(url);
 
     try {
-        const body = await got.head(url, {
-            timeout: process.env.CHECK_TIMEOUT,
+        const body = await got.head(url.href, {
+            timeout: 300,
             retry: {
                 retries: 0
             },
@@ -51,8 +50,4 @@ exports.checkUrl = async function (req, res) {
     }
 };
 
-//TODO: Lower timeout - test with bla.com
 //TODO: google analytics
-//TODO: unit tests
-//TODO: sitemap.xml not accessible
-//TODO: robots.txt not accessible

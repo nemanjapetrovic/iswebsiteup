@@ -14,18 +14,21 @@
     "got": "^9.6.0",
     "helmet": "^3.21.2",
     "morgan": "^1.9.1",
-    "punycode": "^2.1.1",
     "stream": "0.0.2",
     "telegram-push": "^1.0.1",
-    "validator": "^12.1.0"
+    "validator": "^12.1.0",
+    "dotenv": "8.2.0"
   },
   "devDependencies": {
-    "dotenv": "8.2.0",
-    "jshint": "2.10.3"
+    "jshint": "2.10.3",
+    "supertest": "4.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
   },
   "scripts": {
     "start": "node src/app.js",
-    "dev-start": "nodemon src/app.js"
+    "dev-start": "nodemon src/app.js",
+    "test": "mocha --timeout 50000 test/*.test.js test/**/*.test.js"
   },
   "repository": {
     "type": "git",
