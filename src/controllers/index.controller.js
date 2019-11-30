@@ -26,13 +26,22 @@ exports.checkUrl = async function (req, res) {
             followRedirect: false
         });
 
-        const websiteUp = okCodes.some(code => code == body.statusCode) ? 1 : 0;
+        const websiteUp = okCodes.some(code => code == body.statusCode) ? true : false;
 
         ///muzic puzic <3
 
+        if (websiteUp) {
+            res.status(200).json({
+                status: body.statusCode,
+                message: 'Up'
+            });
+
+            return false;
+        }
+
         res.status(200).json({
             status: body.statusCode,
-            message: 'Up'
+            message: 'Down'
         });
     } catch (err) {
         res.status(200).json({
@@ -45,3 +54,5 @@ exports.checkUrl = async function (req, res) {
 //TODO: Lower timeout - test with bla.com
 //TODO: google analytics
 //TODO: unit tests
+//TODO: sitemap.xml not accessible
+//TODO: robots.txt not accessible
