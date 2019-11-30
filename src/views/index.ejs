@@ -22,6 +22,18 @@
     <link rel="stylesheet" type="text/css" href="./css/index.css">
 
     <title>IsWebsiteUp | check if website is up or down right now?</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153621880-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-153621880-1');
+    </script>
 </head>
 
 <body>
@@ -60,7 +72,7 @@
                         <input type="text" name="url" id="url" placeholder="test.com" autofocus>
                         <div class="inner">
                             <button id="check-btn" class="btn" type="submit">Check</button>
-                            <p style="margin-top:20px;">
+                            <p style="margin-top:30px;">
                                 Made with ❤️ by <a href="https://nempet.me">Nemanja</a>.
                             </p>
                         </div>
