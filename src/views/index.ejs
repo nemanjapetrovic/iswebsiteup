@@ -139,27 +139,23 @@
             };
 
             // Registering form regex method validator
-            $.validator.addMethod(
-                'regex',
-                function (value, element, regexp) {
-                    var re = new RegExp(regexp);
-                    return this.optional(element) || re.test(value);
-                },
-                'Please check your input.'
-            );
+            $.validator.addMethod('validUrl', function (value, element) {
+                var url = $.validator.methods.url.bind(this);
+                return url(value, element) || url('http://' + value, element);
+            }, 'Please enter a valid URL');
 
             // Registering form validator
             $('#check-url-form').validate({
                 rules: {
                     url: {
                         required: true,
-                        regex: '^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$'
+                        validUrl: true
                     }
                 },
                 messages: {
                     url: {
                         required: 'URL is required.',
-                        regex: 'Invalid URL.'
+                        validUrl: 'Invalid URL.'
                     }
                 },
                 errorElement: 'div',
