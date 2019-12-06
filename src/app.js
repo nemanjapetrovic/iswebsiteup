@@ -32,7 +32,10 @@ app.set('view engine', 'ejs');
 // initializing the logger
 app.use(logger('tiny', {
     skip: function (req, res) {
-        return res.statusCode < 400;
+        if (req.originalUrl == '/' && res.statusCode == 200) {
+            return true;
+        }
+        return res.statusCode < process.env.TELEGRAM_LOGGER_SKIP_STATUS_CODE;
     }
 }));
 
@@ -40,5 +43,5 @@ app.use(logger('tiny', {
 require('./routes/routes')(app);
 
 // run
-app.listen(process.env.PORT);
-console.log('works ... ' + process.env.PORT);
+app.listen(process.env.PORT || 5000);
+console.log(`IsWebsiteUp starting on port ... ${process.env.PORT || 5000}`);
