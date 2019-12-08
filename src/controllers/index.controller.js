@@ -15,7 +15,7 @@ exports.checkUrl = async function (req, res) {
 
     try {
         const body = await got.head(url.href, {
-            timeout: 3000,
+            timeout: 1500,
             retry: {
                 limit: 0
             },
@@ -43,7 +43,6 @@ exports.checkUrl = async function (req, res) {
             message: 'Down'
         });
     } catch (err) {
-        console.log(err);
         res.status(200).json({
             status: 'Unknown',
             message: 'Down'
