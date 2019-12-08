@@ -15,7 +15,7 @@ exports.checkUrl = async function (req, res) {
 
     try {
         const body = await got.head(url.href, {
-            timeout: 300,
+            timeout: 3000,
             retry: {
                 limit: 0
             },
