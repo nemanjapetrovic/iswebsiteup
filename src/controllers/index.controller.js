@@ -43,6 +43,7 @@ exports.checkUrl = async function (req, res) {
             message: 'Down'
         });
     } catch (err) {
+        console.log(err);
         res.status(200).json({
             status: 'Unknown',
             message: 'Down'
