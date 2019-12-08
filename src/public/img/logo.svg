@@ -9,11 +9,7 @@ viewBox="0 0 2604 2604"
    <![CDATA[
     .str1 {stroke:black;stroke-width:62.5;}
     .str0 {stroke:black;stroke-width:104.165;}
-    .fil0 {fill:none}
-    @media (prefers-color-scheme: dark) {
-      .str1 {stroke:white;stroke-width:62.5;}
-      .str0 {stroke:white;stroke-width:104.165;}
-    }
+    .fil0 {fill:none;}
    ]]>
   </style>
  </defs>
