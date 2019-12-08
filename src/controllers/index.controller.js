@@ -17,7 +17,7 @@ exports.checkUrl = async function (req, res) {
         const body = await got.head(url.href, {
             timeout: 300,
             retry: {
-                retries: 0
+                limit: 0
             },
             headers: {
                 'user-agent': 'IsWebsiteUp | check if website is down or up right now? (+https://iswebsiteup.com)'
