@@ -7,13 +7,13 @@ exports.index = async function (req, res) {
 };
 
 exports.checkUrl = async function (req, res) {
-    let url = req.params.url;
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-        url = 'http://' + url; // If HTTP protocol is not defined always go with HTTP check
-    }
-    url = new URL(url);
-
     try {
+        let url = req.params.url;
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'http://' + url; // If HTTP protocol is not defined always go with HTTP check
+        }
+        url = new URL(url);
+
         const body = await got.head(url.href, {
             timeout: 1500,
             retry: {
