@@ -15,6 +15,11 @@ const app = express();
 // Compression
 app.use(compression());
 app.use(helmet());
+app.use(helmet.hsts({
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+}));
 
 // Setting static files
 app.use(express.static(path.join(__dirname, './public')));
