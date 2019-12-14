@@ -4,7 +4,7 @@
   "description": "IsWebsiteUp | check if website is down or up right now? (https://iswebsiteup.com)",
   "main": "app.js",
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "dependencies": {
     "carrier": "^0.3.0",
