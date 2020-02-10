@@ -25,7 +25,7 @@ exports.checkUrl = async function (req, res) {
             followRedirect: false
         });
 
-        const websiteUp = okCodes.some(code => code == body.statusCode) ? true : false;
+        const websiteUp = okCodes.some(code => code === body.statusCode) ? true : false;
 
         ///muzic puzic <3
 

@@ -5,7 +5,7 @@ module.exports = function () {
     return function (req, res, next) {
         const checkUrl = req.params.url;
 
-        if (checkUrl == null ||
+        if (checkUrl === null ||
             checkUrl === undefined ||
             !validator.isURL(checkUrl)) {
             res.sendStatus(400);

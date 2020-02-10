@@ -17,7 +17,6 @@ module.exports = function Logger(format, options) {
     options.stream = passStream;
 
     function onLine(line) {
-        console.log(line);
         if (process.env.TELEGRAM_LOGGER_ACTIVATED == 1) {
             telegramPush.sendAsync(process.env.TELEGRAM_LOGGER_BOT_CHAT_ID, line);
         }
