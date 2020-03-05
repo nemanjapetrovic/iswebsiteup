@@ -50,5 +50,6 @@ app.use(logger('tiny', {
 require('./routes/routes')(app);
 
 // run
-app.listen(process.env.PORT || 5000);
+const server = app.listen(process.env.PORT || 5000);
 console.log(`IsWebsiteUp starting on port ... ${process.env.PORT || 5000}`);
+module.exports = server;
