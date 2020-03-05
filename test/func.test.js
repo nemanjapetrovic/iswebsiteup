@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+/* eslint-disable no-unused-expressions */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('./../src/app');
