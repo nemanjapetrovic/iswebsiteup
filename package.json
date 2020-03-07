@@ -18,18 +18,19 @@
     "validator": "^12.2.0"
   },
   "devDependencies": {
-    "semistandard": "14.2.0",
-    "dotenv": "8.2.0",
     "chai": "^4.2.0",
     "chai-http": "4.3.0",
-    "mocha": "^7.1.0"
+    "dotenv": "8.2.0",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
+    "semistandard": "14.2.0"
   },
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "lint": "semistandard",
     "lint-fix": "semistandard --fix",
-    "test": "mocha --timeout 50000 test/*.test.js test/**/*.test.js"
+    "test": "nyc --reporter=html mocha --timeout 50000 test/*.test.js test/**/*.test.js"
   },
   "repository": {
     "type": "git",

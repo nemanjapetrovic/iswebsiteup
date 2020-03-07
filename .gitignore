@@ -69,3 +69,7 @@ database.db
 #log file
 *log.txt
 *audit.txt
+
+#code coverage
+.nyc_output/
+.coverage/
