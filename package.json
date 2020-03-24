@@ -21,6 +21,7 @@
     "chai": "^4.2.0",
     "chai-http": "4.3.0",
     "dotenv": "8.2.0",
+    "husky": "^4.2.3",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
     "semistandard": "14.2.0"
@@ -31,6 +32,12 @@
     "lint": "semistandard",
     "lint-fix": "semistandard --fix",
     "test": "nyc --reporter=html mocha --timeout 50000 test/*.test.js test/**/*.test.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm lint && npm test"
+    }
   },
   "repository": {
     "type": "git",
