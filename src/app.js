@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const path = require('path');
 
-const logger = require('./logger/http.logger');
+const logger = require('./config/http.logger');
 
 // App
 const app = express();

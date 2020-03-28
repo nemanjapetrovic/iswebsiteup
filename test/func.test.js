@@ -302,7 +302,7 @@ describe('IsWebsiteUp tests', () => {
 
   describe('Logger test', () => {
     it('Create instance of a logger', (done) => {
-      var logger = require('./../src/logger/http.logger');
+      var logger = require('./../src/config/http.logger');
       logger();
       done();
     });
