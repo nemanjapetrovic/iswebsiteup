@@ -2,12 +2,12 @@
 /* eslint-disable no-unused-expressions */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('./../src/app');
+const server = require('../src/app');
 
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('IsWebsiteUp tests', () => {
+describe('IsWebsiteUp Integration tests', () => {
   after(() => {
     server.close();
   });
@@ -52,7 +52,7 @@ describe('IsWebsiteUp tests', () => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 'Unknown',
+            status: 0,
             message: 'Down'
           });
           done();
@@ -66,7 +66,7 @@ describe('IsWebsiteUp tests', () => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 'Unknown',
+            status: 0,
             message: 'Down'
           });
           done();
@@ -80,7 +80,7 @@ describe('IsWebsiteUp tests', () => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 'Unknown',
+            status: 0,
             message: 'Down'
           });
           done();
@@ -94,7 +94,7 @@ describe('IsWebsiteUp tests', () => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 'Unknown',
+            status: 0,
             message: 'Down'
           });
           done();
@@ -108,7 +108,7 @@ describe('IsWebsiteUp tests', () => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 'Unknown',
+            status: 0,
             message: 'Down'
           });
           done();
@@ -297,14 +297,6 @@ describe('IsWebsiteUp tests', () => {
           });
           done();
         });
-    });
-  });
-
-  describe('Logger test', () => {
-    it('Create instance of a logger', (done) => {
-      var logger = require('./../src/config/http.logger');
-      logger();
-      done();
     });
   });
 });

@@ -42,7 +42,7 @@ exports.pingUrl = async (url) => {
     };
   } catch (err) {
     return {
-      status: 'Unknown',
+      status: 0,
       message: 'Down'
     };
   }
