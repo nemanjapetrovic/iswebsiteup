@@ -40,6 +40,8 @@ exports.pingUrl = async (url) => {
     pingResult.update(body.statusCode, 'Down');
     return pingResult;
   } catch (err) {
+    // activate error sending if needed any time in the future
+    // telegramPush.sendAsync(process.env.TELEGRAM_LOGGER_BOT_CHAT_ID, JSON.stringify(err));
     return pingResult;
   }
 };
