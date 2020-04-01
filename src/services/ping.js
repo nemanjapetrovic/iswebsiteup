@@ -4,13 +4,12 @@ const constants = require('./../config/constants');
 const PingResult = require('./../models/pingResult');
 
 exports.pingUrl = async (url) => {
+  if (url == null) {
+    throw new Error('Argument url is undefined or null');
+  }
+
   const pingResult = new PingResult(0, 'Down');
-
   try {
-    if (url == null) {
-      throw new Error('Argument url is undefined or null');
-    }
-
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       url = 'http://' + url; // If protocol is not defined always go with HTTP
     }

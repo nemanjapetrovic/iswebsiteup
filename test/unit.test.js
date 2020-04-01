@@ -14,7 +14,17 @@ describe('IsWebsiteUp Unit tests', () => {
     });
   });
 
-  describe('Test of websites which are DOWN', () => {
+  describe('Ping service arguments check', () => {
+    it('Call ping service without any argument', async () => {
+      try {
+        await pingService.pingUrl();
+      } catch (err) {
+        expect(() => { throw err; }).to.throw(Error, 'Argument url is undefined or null');
+      }
+    });
+  });
+
+  describe('Ping service test of websites which are DOWN', () => {
     it('[Timeout] gasas.com timeout', async () => {
       const pingResult = await pingService.pingUrl('gasas.com');
       expect(pingResult.status).to.be.equal(0);
@@ -46,7 +56,7 @@ describe('IsWebsiteUp Unit tests', () => {
     });
   });
 
-  describe('Ping service test', () => {
+  describe('Ping service test of websites which are UP', () => {
     it('URL without protocol', async () => {
       const pingResult = await pingService.pingUrl('hcp.switchplus.ch');
       expect(pingResult.status).to.be.equal(301);
