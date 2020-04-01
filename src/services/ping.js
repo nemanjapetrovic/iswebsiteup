@@ -1,8 +1,11 @@
 const got = require('got');
 
 const constants = require('./../config/constants');
+const PingResult = require('./../models/pingResult');
 
 exports.pingUrl = async (url) => {
+  const pingResult = new PingResult(0, 'Down');
+
   try {
     if (url == null) {
       throw new Error('Argument url is undefined or null');
@@ -30,20 +33,13 @@ exports.pingUrl = async (url) => {
     /// muzic puzic <3
 
     if (websiteUp) {
-      return {
-        status: body.statusCode,
-        message: 'Up'
-      };
+      pingResult.update(body.statusCode, 'Up');
+      return pingResult;
     }
 
-    return {
-      status: body.statusCode,
-      message: 'Down'
-    };
+    pingResult.update(body.statusCode, 'Down');
+    return pingResult;
   } catch (err) {
-    return {
-      status: 0,
-      message: 'Down'
-    };
+    return pingResult;
   }
 };
