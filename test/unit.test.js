@@ -6,14 +6,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 describe('IsWebsiteUp Unit tests', () => {
-  describe('Logger test', () => {
-    it('Create instance of a logger', (done) => {
-      var logger = require('../src/config/http.logger');
-      logger();
-      done();
-    });
-  });
-
   describe('Ping service arguments check', () => {
     it('Call ping service without any argument', async () => {
       try {
