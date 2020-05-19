@@ -6,14 +6,12 @@ if (process.env.NODE_ENV !== 'production') {
 // npm: Packages-standard
 const express = require('express');
 const helmet = require('helmet');
-const compression = require('compression');
 const path = require('path');
 
 // App
 const app = express();
 
-// Compression
-app.use(compression());
+// Helmet
 app.use(helmet());
 app.use(helmet.hsts({
   maxAge: 31536000,
