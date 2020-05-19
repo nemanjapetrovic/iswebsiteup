@@ -1,11 +1,12 @@
 const got = require('got');
 
 const constants = require('./../config/constants');
+const pingEvent = require('./../subscribers/ping');
 const PingResult = require('./../models/pingResult');
 
 exports.pingUrl = async (url) => {
   if (url == null) {
-    throw new Error('Argument url is undefined or null');
+    throw new Error('Argument url is undefined or null.');
   }
 
   const pingResult = new PingResult(0, 'Down');
@@ -15,6 +16,9 @@ exports.pingUrl = async (url) => {
     }
 
     url = new URL(url);
+
+    // Initiate ping event
+    pingEvent(url.href);
 
     const body = await got.head(url.href, {
       timeout: 1500,

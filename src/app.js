@@ -9,8 +9,6 @@ const helmet = require('helmet');
 const compression = require('compression');
 const path = require('path');
 
-const logger = require('./config/http.logger');
-
 // App
 const app = express();
 
@@ -35,16 +33,6 @@ app.use(express.urlencoded({
 // Setting views and template engine
 app.set('views', path.join(__dirname, './views/'));
 app.set('view engine', 'ejs');
-
-// initializing the logger
-app.use(logger('tiny', {
-  skip: function (req, res) {
-    if (req.originalUrl === '/' && res.statusCode === 200) {
-      return true;
-    }
-    return res.statusCode < process.env.TELEGRAM_LOGGER_SKIP_STATUS_CODE;
-  }
-}));
 
 // routes
 require('./routes/routes')(app);
