@@ -21,7 +21,7 @@ exports.pingUrl = async (url) => {
     pingEvent(url.href);
 
     const body = await got.head(url.href, {
-      timeout: 1500,
+      timeout: 3000,
       retry: {
         limit: 0
       },
