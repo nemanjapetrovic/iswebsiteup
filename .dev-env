@@ -1,6 +1,7 @@
 #Environment properties
 NODE_ENV=dev
 PORT=5000
+NPM_CONFIG_PRODUCTION=true
 
 #Telegram
 TELEGRAM_LOGGER_ACTIVATED=1
