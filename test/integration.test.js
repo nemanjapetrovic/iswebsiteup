@@ -25,7 +25,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('400 bad req', (done) => {
       chai.request(server)
-        .get('/someNotValidUrl')
+        .get('/ping?url=someNotValidUrl')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(400);
@@ -47,7 +47,7 @@ describe('IsWebsiteUp Integration tests', () => {
   describe('Test of websites which are DOWN', () => {
     it('[Timeout] gasas.com timeout', (done) => {
       chai.request(server)
-        .get('/gasas.com')
+        .get('/ping?url=gasas.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -61,7 +61,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('[Not Exist] aslkclakslkas.com check', (done) => {
       chai.request(server)
-        .get('/aslkclakslkas.com')
+        .get('/ping?url=aslkclakslkas.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -75,7 +75,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('[NO SSL] https://nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/https%3A%2F%2Fnikos-hosting.com')
+        .get('/ping?url=https%3A%2F%2Fnikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -89,7 +89,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('PORT check', (done) => {
       chai.request(server)
-        .get('/nempet.me:8527')
+        .get('/ping?url=nempet.me:8527')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -103,7 +103,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('[NO SSL] https://www.nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/https%3A%2F%2Fwww.nikos-hosting.com')
+        .get('/ping?url=https%3A%2F%2Fwww.nikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -119,7 +119,7 @@ describe('IsWebsiteUp Integration tests', () => {
   describe('Test of websites which are UP', () => {
     it('hcp.switchplus.ch check', (done) => {
       chai.request(server)
-        .get('/hcp.switchplus.ch')
+        .get('/ping?url=hcp.switchplus.ch')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -133,7 +133,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('google.com check', (done) => {
       chai.request(server)
-        .get('/google.com')
+        .get('/ping?url=google.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -147,7 +147,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('http://google.com check', (done) => {
       chai.request(server)
-        .get('/http%3A%2F%2Fgoogle.com')
+        .get('/ping?url=http%3A%2F%2Fgoogle.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -161,7 +161,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('https://google.com check', (done) => {
       chai.request(server)
-        .get('/https%3A%2F%2Fgoogle.com')
+        .get('/ping?url=https%3A%2F%2Fgoogle.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -175,7 +175,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('www.google.com check', (done) => {
       chai.request(server)
-        .get('/www.google.com')
+        .get('/ping?url=www.google.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -189,7 +189,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('http://www.google.com check', (done) => {
       chai.request(server)
-        .get('/http%3A%2F%2Fwww.google.com')
+        .get('/ping?url=http%3A%2F%2Fwww.google.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -203,7 +203,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('https://www.google.com check', (done) => {
       chai.request(server)
-        .get('/https%3A%2F%2Fwww.google.com')
+        .get('/ping?url=https%3A%2F%2Fwww.google.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -217,7 +217,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/nikos-hosting.com')
+        .get('/ping?url=nikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -231,7 +231,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('http://nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/http%3A%2F%2Fnikos-hosting.com')
+        .get('/ping?url=http%3A%2F%2Fnikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -245,7 +245,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('www.nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/www.nikos-hosting.com')
+        .get('/ping?url=www.nikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -259,7 +259,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('http://www.nikos-hosting.com check', (done) => {
       chai.request(server)
-        .get('/http%3A%2F%2Fwww.nikos-hosting.com')
+        .get('/ping?url=http%3A%2F%2Fwww.nikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -273,7 +273,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('[Umlaut] städteflüge.com check', (done) => {
       chai.request(server)
-        .get('/städteflüge.com')
+        .get('/ping?url=städteflüge.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -287,7 +287,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('LONG URL check', (done) => {
       chai.request(server)
-        .get('/nempet.me%2Fmongoose-morgan%2Fmongoose-morgan.html')
+        .get('/ping?url=nempet.me%2Fmongoose-morgan%2Fmongoose-morgan.html')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);

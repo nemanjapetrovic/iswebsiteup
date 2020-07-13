@@ -7,6 +7,6 @@ const validateUrl = require('./../middleware/validation/url.validate');
 
 router.get('/', indexController.index);
 
-router.get('/:url', [validateUrl()], indexController.checkUrl);
+router.get('/ping', [validateUrl()], indexController.ping);
 
 module.exports = router;

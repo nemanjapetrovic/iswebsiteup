@@ -150,7 +150,7 @@
             function checkUrl() {
                 checkInitialized();
 
-                $.get('/' + encodeURIComponent($("#url").val()), function (res) {
+                $.get('/ping?url=' + encodeURIComponent($("#url").val()), function (res) {
                     $('#website-check').hide();
                     switch (res.message) {
                         case 'Up':
