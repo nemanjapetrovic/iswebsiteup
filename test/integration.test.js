@@ -89,7 +89,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('PORT check', (done) => {
       chai.request(server)
-        .get('/ping?url=nempet.me:8527')
+        .get('/ping?url=nempet.com:8527')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -287,7 +287,7 @@ describe('IsWebsiteUp Integration tests', () => {
 
     it('LONG URL check', (done) => {
       chai.request(server)
-        .get('/ping?url=nempet.me%2Fmongoose-morgan%2Fmongoose-morgan.html')
+        .get('/ping?url=nempet.com%2Fmongoose-morgan%2Fmongoose-morgan.html')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);

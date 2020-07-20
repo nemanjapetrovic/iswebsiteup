@@ -36,7 +36,7 @@ describe('IsWebsiteUp Unit tests', () => {
     });
 
     it('PORT check', async () => {
-      const pingResult = await pingService.pingUrl('nempet.me:8527');
+      const pingResult = await pingService.pingUrl('nempet.com:8527');
       expect(pingResult.status).to.be.equal(0);
       expect(pingResult.message).to.be.equal('Down');
     });
@@ -92,7 +92,7 @@ describe('IsWebsiteUp Unit tests', () => {
     });
 
     it('Long URL check', async () => {
-      const pingResult = await pingService.pingUrl('nempet.me/mongoose-morgan/mongoose-morgan.html');
+      const pingResult = await pingService.pingUrl('nempet.com/mongoose-morgan/mongoose-morgan.html');
       expect(pingResult.status).to.be.equal(301);
       expect(pingResult.message).to.be.equal('Up');
     });
