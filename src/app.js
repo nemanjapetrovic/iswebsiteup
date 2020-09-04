@@ -12,7 +12,10 @@ const path = require('path');
 const app = express();
 
 // Helmet
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+  hsts: false
+}));
 
 // Setting static files
 app.use(express.static(path.join(__dirname, './public')));
