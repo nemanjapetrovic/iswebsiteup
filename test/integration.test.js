@@ -73,37 +73,9 @@ describe('IsWebsiteUp Integration tests', () => {
         });
     });
 
-    it('[NO SSL] https://nikos-hosting.com check', (done) => {
-      chai.request(server)
-        .get('/ping?url=https%3A%2F%2Fnikos-hosting.com')
-        .end((err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          expect(res.body).to.deep.equal({
-            status: 0,
-            message: 'Down'
-          });
-          done();
-        });
-    });
-
     it('PORT check', (done) => {
       chai.request(server)
         .get('/ping?url=nempet.com:8527')
-        .end((err, res) => {
-          expect(err).to.be.null;
-          expect(res).to.have.status(200);
-          expect(res.body).to.deep.equal({
-            status: 0,
-            message: 'Down'
-          });
-          done();
-        });
-    });
-
-    it('[NO SSL] https://www.nikos-hosting.com check', (done) => {
-      chai.request(server)
-        .get('/ping?url=https%3A%2F%2Fwww.nikos-hosting.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);

@@ -29,20 +29,8 @@ describe('IsWebsiteUp Unit tests', () => {
       expect(pingResult.message).to.be.equal('Down');
     });
 
-    it('[NO SSL] https://nikos-hosting.com check', async () => {
-      const pingResult = await pingService.pingUrl('https://nikos-hosting.com');
-      expect(pingResult.status).to.be.equal(0);
-      expect(pingResult.message).to.be.equal('Down');
-    });
-
     it('PORT check', async () => {
       const pingResult = await pingService.pingUrl('nempet.com:8527');
-      expect(pingResult.status).to.be.equal(0);
-      expect(pingResult.message).to.be.equal('Down');
-    });
-
-    it('[NO SSL] https://www.nikos-hosting.com check', async () => {
-      const pingResult = await pingService.pingUrl('https://www.nikos-hosting.com');
       expect(pingResult.status).to.be.equal(0);
       expect(pingResult.message).to.be.equal('Down');
     });
