@@ -41,7 +41,7 @@
     "url": "git+ssh://git@github.com/nemanjapetrovic/iswebsiteup.git"
   },
   "author": "Nemanja Petrovic <nempet.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nemanjapetrovic/iswebsiteup/issues"
   },
