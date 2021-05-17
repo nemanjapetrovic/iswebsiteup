@@ -1,6 +1,8 @@
 #Environment properties
 NODE_ENV=dev
 PORT=5000
+
+#Dokku related variables - skip installing dev dependencies
 NPM_CONFIG_PRODUCTION=true
 
 #Telegram
