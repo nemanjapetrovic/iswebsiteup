@@ -1,0 +1,12 @@
+**/.vscode
+**/node_modules/
+**/coverage
+**/test
+**/.git
+**/.editorconfig
+**/.env
+**/README.md
+**/LICENSE
+**/npm-debug.log
+**/dist
+**/logo.cdr

@@ -10,7 +10,10 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "got": "^11.8.2",
+    "gulp": "^4.0.2",
+    "gulp-version-number": "^0.2.4",
     "helmet": "^4.6.0",
+    "ncp": "^2.0.0",
     "telegram-push": "^1.0.3",
     "validator": "^13.6.0"
   },
@@ -26,6 +29,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
+    "build": "node scripts/build.js",
     "lint": "semistandard",
     "lint-fix": "semistandard --fix",
     "test": "nyc --reporter=html mocha --timeout 50000 test/*.test.js test/**/*.test.js"
