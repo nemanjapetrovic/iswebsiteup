@@ -2,24 +2,65 @@ const ncp = require('ncp').ncp;
 const fs = require('fs');
 const gulp = require('gulp');
 const version = require('gulp-version-number');
+const path = require('path');
 
-console.log('BUILD START');
+const seoFiles = require('./seo');
 
+console.log('-----BUILD START-----');
+
+// Cleanup
 if (fs.existsSync('./www')) {
-  fs.rmdirSync('./www', { recursive: true });
+  console.log('\u2705 Removing old www folder');
+  fs.rmSync('./www', { recursive: true });
 }
 
+// www creation
 fs.mkdirSync('./www');
+console.log('\u2705 Creating a new www folder');
 
+// Copy and remaining build process (SEO + versioning public files)
 ncp('./src', './www', function (err) {
   if (err) {
     return console.error(err);
   }
-  console.log('Done coping of src folder!');
-  console.log('BUILD DONE');
+  console.log('\u2705 Done coping of src folder!');
 
-  console.log('START Versioning JS/CSS');
+  // #region SEO optimization pages
+  console.log('Generating SEO files');
+  const originalViewPath = path.join(__dirname, '..', 'src', 'views', 'index.ejs');
+  for (var seoFile of seoFiles) {
+    // copy original view and read it
+    const newViewPath = path.join(__dirname, '..', 'www', 'views', seoFile.file.name);
+    fs.copyFileSync(originalViewPath, newViewPath);
+    let data = fs.readFileSync(newViewPath, 'utf8');
 
+    // parse - title
+    const titleRegex = /<title>.*?<\/title>/g;
+    data = data.replace(titleRegex, `<title>${seoFile.html.title}</title>`);
+
+    // parse - og title
+    const ogTitleRegex = /<meta property="og:title" content=".*?>/g;
+    data = data.replace(ogTitleRegex, `<meta property="og:title" content="${seoFile.html.title}">`);
+
+    // parse - twitter title
+    const twitterTitleRegex = /<meta name="twitter:title" content=".*?>/g;
+    data = data.replace(twitterTitleRegex, `<meta name="twitter:title" content="${seoFile.html.title}">`);
+
+    // parse - keywords
+    const keywordsRegex = /<meta name="keywords" content=.*?>/g;
+    data = data.replace(keywordsRegex, `<meta name="keywords" content="${seoFile.html.keywords}">`);
+
+    // parse - content
+    const contentRegex = /<p class="headline">.*?<\/p>/g;
+    data = data.replace(contentRegex, `<p class="headline">${seoFile.content.pageText}</p>`);
+
+    fs.writeFileSync(newViewPath, data, 'utf8');
+
+    console.log(`\t\u2705 Done ${seoFile.file.name}`);
+  }
+  // #endregion
+
+  // #region Versioning JS/CSS
   const versionConfig = {
     value: '%MDS%',
     append: {
@@ -34,5 +75,8 @@ ncp('./src', './www', function (err) {
       return file.base;
     }));
 
-  console.log('END Versioning JS/CSS');
+  console.log('\u2705 Done versioning JS/CSS');
+  // #endregion
+
+  console.log('-----BUILD DONE-----');
 });

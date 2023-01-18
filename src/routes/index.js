@@ -9,4 +9,6 @@ router.get('/', indexController.index);
 
 router.get('/ping', [validateUrl()], indexController.ping);
 
+router.get('/:page', indexController.seo);
+
 module.exports = router;
