@@ -74,8 +74,8 @@ describe('IsWebsiteUp Unit tests', () => {
     });
 
     it('Umlaut URL', async () => {
-      const pingResult = await pingService.pingUrl('städteflüge.com');
-      expect(pingResult.status).to.be.equal(200);
+      const pingResult = await pingService.pingUrl('öbb.at');
+      expect(pingResult.status).to.be.equal(302);
       expect(pingResult.message).to.be.equal('Up');
     });
 

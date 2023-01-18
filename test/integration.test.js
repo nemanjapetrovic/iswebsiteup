@@ -243,14 +243,14 @@ describe('IsWebsiteUp Integration tests', () => {
         });
     });
 
-    it('[Umlaut] städteflüge.com check', (done) => {
+    it('[Umlaut] öbb.at check', (done) => {
       chai.request(server)
-        .get('/ping?url=städteflüge.com')
+        .get('/ping?url=öbb.at')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           expect(res.body).to.deep.equal({
-            status: 200,
+            status: 302,
             message: 'Up'
           });
           done();
