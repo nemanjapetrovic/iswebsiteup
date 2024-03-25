@@ -5,7 +5,7 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-describe('IsWebsiteUp Unit tests', () => {
+describe('IsWebsiteUp - Unit tests', () => {
   describe('Ping service arguments check', () => {
     it('Call ping service without any argument', async () => {
       try {
@@ -17,8 +17,8 @@ describe('IsWebsiteUp Unit tests', () => {
   });
 
   describe('Ping service test of websites which are DOWN', () => {
-    it('[Timeout] gasas.com timeout', async () => {
-      const pingResult = await pingService.pingUrl('gasas.com');
+    it('[Timeout] googles.com timeout', async () => {
+      const pingResult = await pingService.pingUrl('googles.com');
       expect(pingResult.status).to.be.equal(0);
       expect(pingResult.message).to.be.equal('Down');
     });
@@ -38,7 +38,7 @@ describe('IsWebsiteUp Unit tests', () => {
 
   describe('Ping service test of websites which are UP', () => {
     it('URL without protocol', async () => {
-      const pingResult = await pingService.pingUrl('hcp.switchplus.ch');
+      const pingResult = await pingService.pingUrl('switchplus.ch');
       expect(pingResult.status).to.be.equal(301);
       expect(pingResult.message).to.be.equal('Up');
     });

@@ -7,7 +7,7 @@ const server = require('../src/app');
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('IsWebsiteUp Integration tests', () => {
+describe('IsWebsiteUp - Integration tests', () => {
   after(() => {
     server.close();
   });
@@ -45,9 +45,9 @@ describe('IsWebsiteUp Integration tests', () => {
   });
 
   describe('Test of websites which are DOWN', () => {
-    it('[Timeout] gasas.com timeout', (done) => {
+    it('[Timeout] googles.com timeout', (done) => {
       chai.request(server)
-        .get('/ping?url=gasas.com')
+        .get('/ping?url=googles.com')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
@@ -89,9 +89,9 @@ describe('IsWebsiteUp Integration tests', () => {
   });
 
   describe('Test of websites which are UP', () => {
-    it('hcp.switchplus.ch check', (done) => {
+    it('switchplus.ch check', (done) => {
       chai.request(server)
-        .get('/ping?url=hcp.switchplus.ch')
+        .get('/ping?url=switchplus.ch')
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
